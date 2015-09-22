@@ -236,18 +236,19 @@ int main(int argc, char ** argv) {
 			break;
 
 		switch(c) {
-			case  0: opts.root_path       = optarg;                                      break; // --root
-			case  1: opts.db_path         = optarg;                                      break; // --db
-			case  2: opts.ignore_md5      = true;                                        break; // --ignore-md5
-			case  3: opts.ignore_mode     = true;                                        break; // --ignore-mode
-			case  4: opts.ignore_uid      = true;                                        break; // --ignore-uid
-			case  5: opts.ignore_gid      = true;                                        break; // --ignore-gid
-			case  6: opts.ignore_patterns = alpm_list_add(opts.ignore_patterns, optarg); break; // --ignore
-			case  7: no_color             = true;                                        break; // --no-color
-			case  8: no_default_ignore    = true;                                        break; // --no-default-ignores
-			case  9: print_usage          = true;                                        break; // --help
-			case 10: print_version        = true;                                        break; // --version
-			default: break;
+			case   0: opts.root_path       = optarg;                                      break; // --root
+			case   1: opts.db_path         = optarg;                                      break; // --db
+			case   2: opts.ignore_md5      = true;                                        break; // --ignore-md5
+			case   3: opts.ignore_mode     = true;                                        break; // --ignore-mode
+			case   4: opts.ignore_uid      = true;                                        break; // --ignore-uid
+			case   5: opts.ignore_gid      = true;                                        break; // --ignore-gid
+			case   6: opts.ignore_patterns = alpm_list_add(opts.ignore_patterns, optarg); break; // --ignore
+			case   7: no_color             = true;                                        break; // --no-color
+			case   8: no_default_ignore    = true;                                        break; // --no-default-ignores
+			case   9: print_usage          = true;                                        break; // --help
+			case  10: print_version        = true;                                        break; // --version
+			case '?': exit(EXIT_FAILURE);
+			default:  break;
 		}
 	}
 
