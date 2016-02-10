@@ -12,6 +12,7 @@
 #include "gzip.h"
 #include "md5.h"
 #include "mtree.h"
+#include "string.h"
 
 
 static const char * default_root      = "/";
@@ -30,6 +31,13 @@ static const char * default_ignores[] = {
 	"/var/log/*",
 	"/var/spool/*",
 	"/var/tmp/*"
+};
+static const char * skip[] = {
+	"/.PKGINFO",
+	"/.INSTALL",
+	"/.CHANGELOG",
+	"/.BUILDINFO",
+	NULL
 };
 
 
@@ -346,7 +354,7 @@ int main(int argc, char ** argv) {
 			assert(db_entry != NULL);
 
 			const char * filepath = mtree_entry_get_filepath(db_entry);
-			if(strcmp(filepath, "/.PKGINFO") == 0 || strcmp(filepath, "/.INSTALL") == 0 || strcmp(filepath, "/.CHANGELOG") == 0)
+			if(string_vector_contains(skip, filepath))
 				continue;
 
 			struct filesystem_entry_t * fs_entry = filesystem_get_path(filesystem, filepath);

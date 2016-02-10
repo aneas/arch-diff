@@ -64,3 +64,11 @@ void convert_octal(char * str) {
 	}
 	*dest = 0;
 }
+
+
+bool string_vector_contains(const char * const * vector, const char * str) {
+	for(const char * const * it = vector; *it != NULL; it++)
+		if(strcmp(*it, str) == 0)
+			return true;
+	return false;
+}

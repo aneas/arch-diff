@@ -4,6 +4,8 @@
 
 #include "list.h"
 
+#include <stdbool.h>
+
 
 #ifdef __cplusplus
 extern "C" {
@@ -29,6 +31,10 @@ alpm_list_t * split_words(const char * str);
  */
 void convert_octal(char * str);
 
+/**
+ * Searches the vector for the given string. Returns true if and only if the string is found.
+ */
+bool string_vector_contains(const char * const * vector, const char * str);
 
 #ifdef __cplusplus
 }
